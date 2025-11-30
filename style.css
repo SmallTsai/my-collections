@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    background-color: #ffffff;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-header {
+    position: fixed;
+    top: 30px;
+    left: 40px;
+    z-index: 100;
+}
+
+.site-header h1 {
+    font-size: 16px;
+    font-weight: 300;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+.gallery-container {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    padding-bottom: 20px;
+}
+
+.photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.main-photo {
+    max-width: 100%;
+    max-height: calc(100vh - 200px);
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.main-photo.loaded {
+    opacity: 1;
+}
+
+.photo-caption {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #333;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 60px;
+    color: #ddd;
+    cursor: pointer;
+    padding: 20px;
+    transition: color 0.3s ease;
+    z-index: 10;
+    font-weight: 200;
+}
+
+.nav-button:hover {
+    color: #333;
+}
+
+.nav-button.prev {
+    left: 40px;
+}
+
+.nav-button.next {
+    right: 40px;
+}
+
+.thumbnail-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid #f0f0f0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    z-index: 50;
+}
+
+.thumbnail-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.thumbnail-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 2px;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+}
+
+.thumbnail-wrapper {
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+    align-items: center;
+    height: 100%;
+}
+
+.thumbnail {
+    height: 50px;
+    width: auto;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.thumbnail:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.thumbnail.active {
+    opacity: 1;
+    border: 2px solid #333;
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        top: 20px;
+        left: 20px;
+    }
+
+    .site-header h1 {
+        font-size: 14px;
+    }
+
+    .gallery-container {
+        height: calc(100vh - 60px);
+    }
+
+    .main-photo {
+        max-height: calc(100vh - 180px);
+    }
+
+    .nav-button {
+        font-size: 40px;
+        padding: 10px;
+    }
+
+    .nav-button.prev {
+        left: 10px;
+    }
+
+    .nav-button.next {
+        right: 10px;
+    }
+
+    .photo-caption {
+        font-size: 13px;
+        margin-top: 15px;
+    }
+
+    .thumbnail-container {
+        height: 60px;
+    }
+
+    .thumbnail {
+        height: 40px;
+    }
+
+    .thumbnail-wrapper {
+        padding: 10px 15px;
+    }
+}
